@@ -8,23 +8,23 @@ const SideMenu = (): JSX.Element => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-blue-500 p-5">
+    <div className="containers">
       <NavLink to="/" className={`side-text ${isActive('/') ? 'text-blue-950' : 'text-white'}`}>
-        <span className="material-icons px-2 text-4xl">home</span>
+        <span className="material-icons icons">home</span>
         <p>Home</p>
       </NavLink>
       <NavLink
         to="/task-list"
         className={`side-text ${isActive('/task-list') ? 'text-blue-950' : 'text-white'}`}
       >
-        <span className="material-icons px-2 text-4xl">menu</span>
+        <span className="material-icons icons">menu</span>
         <p>Task List</p>
       </NavLink>
       <NavLink
         to="/task-progress"
         className={`side-text ${isActive('/task-progress') ? 'text-blue-950' : 'text-white'}`}
       >
-        <span className="material-icons px-2 text-4xl">check_box</span>
+        <span className="material-icons icons">check_box</span>
         <p>Task Progress</p>
       </NavLink>
     </div>

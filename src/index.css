@@ -4,7 +4,7 @@
 
 @layer utilities {
   h1 {
-    @apply text-4xl font-semibold;
+    @apply py-4 text-4xl font-semibold;
   }
 }
 
@@ -14,6 +14,19 @@
   }
 }
 
+@layer components {
+  .containers {
+    @apply flex min-h-screen flex-col bg-blue-500 p-5;
+  }
+}
+
+@layer components {
+  .icons {
+    @apply px-2 text-4xl;
+  }
+}
+
 body {
+  font-family: 'Inter';
   margin: 0;
 }
