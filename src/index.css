@@ -26,6 +26,30 @@
   }
 }
 
+@layer components {
+  .list-task {
+    @apply -mt-4 mb-[40px] box-border flex w-[60%] items-center justify-center rounded-md bg-[#55C89F] p-2 py-3 text-[#fff] shadow-lg transition-all duration-200 hover:bg-green-500;
+  }
+}
+
+@layer components {
+  .task-container {
+    @apply w-[80%] px-5 py-8;
+  }
+}
+
+@layer components {
+  .task-title {
+    @apply mb-[40px] text-3xl text-[#55C89F];
+  }
+}
+
+@layer components {
+  .link-task {
+    @apply mr-[24px] rounded-lg bg-[#55ACC8] p-[16px] text-[#fff] no-underline shadow-lg transition-all duration-300 hover:bg-blue-400;
+  }
+}
+
 body {
   font-family: 'Inter';
   margin: 0;
