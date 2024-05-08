@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  h1 {
+    @apply text-4xl font-semibold;
+  }
+}
+
+@layer components {
+  .side-text {
+    @apply my-3 flex items-center text-xl font-semibold no-underline transition-all hover:text-blue-950;
+  }
+}
+
+body {
+  margin: 0;
+}
