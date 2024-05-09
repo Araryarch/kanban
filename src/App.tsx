@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import SideMenu from './Components/Sidemenu'
 import TaskSummary from './features/tasks/Components/TaskSummary'
+import TaskList from './features/tasks/Components/TaskList/TaskList'
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
             element={
               <div className="flex">
                 <SideMenu />
-                <h1>Task List</h1>
+                <TaskList />
               </div>
             }
           />

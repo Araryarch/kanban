@@ -15,7 +15,7 @@ const TaskSummary = (): JSX.Element => {
           You have completed {completedTasks.length} {completedTasks.length <= 1 ? 'task' : 'tasks'}
         </h2>
       </div>
-      <div className="list-task">
+      <div className="list-task hover:bg-[#e53170]">
         <h2>
           You still have {uncompletedTasks.length} {uncompletedTasks.length <= 1 ? 'task' : 'tasks'}{' '}
           left
@@ -25,8 +25,7 @@ const TaskSummary = (): JSX.Element => {
         <Link to="/task-list" className="link-task">
           See Your Task List
         </Link>
-
-        <Link to="/progress-management" className="link-task">
+        <Link to="/task-progress" className="link-task">
           Manage Your Task Progress
         </Link>
       </div>
