@@ -10,7 +10,7 @@
 
 @layer components {
   .side-text {
-    @apply my-3 flex items-center text-xl font-semibold no-underline transition-all hover:text-blue-950;
+    @apply my-3 flex items-center rounded-md px-3 py-2 text-xl font-semibold no-underline shadow-xl transition-all hover:bg-blue-400 hover:text-blue-950 hover:shadow-sm hover:shadow-slate-500;
   }
 }
 
