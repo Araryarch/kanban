@@ -21,7 +21,7 @@ const getProgressCategory = (progressOrder: number): JSX.Element => {
     case 3:
       return (
         <span className="text-blue-500 transition-all duration-300 ease-in-out hover:text-blue-700">
-          Waiting/In Review
+          In Review / Waiting
         </span>
       )
     case 4:

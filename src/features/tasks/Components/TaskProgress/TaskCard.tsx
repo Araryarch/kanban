@@ -33,7 +33,7 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         {task.progressOrder !== 1 && task.progressOrder !== 4 && (
           <>
             <button
-              className={`material-icons cardIcons ${task.progressOrder === 2 ? 'bg-red-500 hover:bg-red-700' : 'bg-blue-500 hover:bg-blue-700'}`}
+              className={`material-icons cardIcons ${task.progressOrder === 2 ? 'bg-red-500 hover:bg-red-700' : 'bg-yellow-500 hover:bg-yellow-700'}`}
             >
               chevron_left
             </button>
