@@ -31,7 +31,7 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         >
           check_circle
         </div>
-        <div className={`${getIconStyle(task.progressOrder)} menuIcons`}>more_vert</div>
+        <div className="material-icons menuIcons">more_vert</div>
       </div>
       <p className="cardTitle font-semibold">{task.title}</p>
       <div>
