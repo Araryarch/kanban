@@ -104,7 +104,7 @@
     @apply mb-8;
   }
   .cardIcons {
-    @apply rounded-md bg-[#0f0e17] p-2 text-white shadow-sm transition-all duration-200 ease-in-out hover:bg-slate-800;
+    @apply rounded-md p-2 text-white shadow-md transition-all duration-200 ease-in-out;
   }
 }
 

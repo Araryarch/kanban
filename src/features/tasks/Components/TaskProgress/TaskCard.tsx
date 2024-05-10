@@ -25,11 +25,29 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         <p>Due on {task.dueDate}</p>
       </div>
       <div className={getArrowPositionStyle(task.progressOrder)}>
-        {task.progressOrder !== 1 && (
-          <button className="material-icons cardIcons">chevron_left</button>
+        {task.progressOrder === 1 && (
+          <button className="material-icons cardIcons bg-yellow-500 hover:bg-yellow-700">
+            chevron_right
+          </button>
         )}
-        {task.progressOrder !== 4 && (
-          <button className="material-icons cardIcons">chevron_right</button>
+        {task.progressOrder !== 1 && task.progressOrder !== 4 && (
+          <>
+            <button
+              className={`material-icons cardIcons ${task.progressOrder === 2 ? 'bg-red-500 hover:bg-red-700' : 'bg-blue-500 hover:bg-blue-700'}`}
+            >
+              chevron_left
+            </button>
+            <button
+              className={`material-icons cardIcons ${task.progressOrder === 2 ? 'bg-blue-500 hover:bg-blue-700' : 'bg-green-500 hover:bg-green-700'}`}
+            >
+              chevron_right
+            </button>
+          </>
+        )}
+        {task.progressOrder === 4 && (
+          <button className="material-icons cardIcons bg-blue-500 hover:bg-blue-700">
+            chevron_left
+          </button>
         )}
       </div>
     </div>
