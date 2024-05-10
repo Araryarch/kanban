@@ -7,7 +7,13 @@ interface TaskListItemProps {
 
 const getIconStyle = (progressOrder: number): string => {
   const colorClass =
-    progressOrder === TASK_PROGRESS_ID.COMPLETED ? 'text-green-500' : 'text-gray-500'
+    progressOrder === TASK_PROGRESS_ID.COMPLETED
+      ? 'text-green-500 checklist'
+      : progressOrder === TASK_PROGRESS_ID.WAITING
+        ? 'text-blue-500 checklist'
+        : progressOrder === TASK_PROGRESS_ID.IN_PROGRESS
+          ? 'text-yellow-500 checklist'
+          : 'text-red-500 checklist'
   const cursorClass =
     progressOrder === TASK_PROGRESS_ID.COMPLETED ? 'cursor-default' : 'cursor-pointer'
   return `${colorClass} ${cursorClass} text-xl mr-2 material-icons`

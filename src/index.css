@@ -9,6 +9,9 @@
 }
 
 @layer components {
+  .checklist {
+    @apply rounded-lg bg-slate-800 px-3 py-1 shadow-md shadow-slate-600 hover:bg-slate-900 hover:text-green-500 hover:shadow-sm hover:shadow-slate-950;
+  }
   .side-text {
     @apply my-3 flex items-center rounded-md px-3 py-2 text-xl font-semibold no-underline shadow-sm shadow-white transition-all hover:bg-[#eebbc3] hover:text-blue-950 hover:shadow-md hover:shadow-slate-300;
   }
