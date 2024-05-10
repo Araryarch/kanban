@@ -1,49 +1,73 @@
 import type { Task } from '../../../../types'
+import { TASK_PROGRESS_STATUS, TASK_PROGRESS_ID } from '../../../../constants/app'
+import { useRecoilState } from 'recoil'
+import { tasksState } from '../../TaskAtoms'
 
 interface TaskListItemProps {
   task: Task
 }
 
+const getIconStyle = (progressOrder: number): string => {
+  const colorClass =
+    progressOrder === TASK_PROGRESS_ID.COMPLETED ? 'text-green-500' : 'text-gray-500'
+  const cursorClass =
+    progressOrder === TASK_PROGRESS_ID.COMPLETED ? 'cursor-default' : 'cursor-pointer'
+  return `${colorClass} ${cursorClass} text-xl mr-2 material-icons`
+}
+
 const getProgressCategory = (progressOrder: number): JSX.Element => {
   switch (progressOrder) {
-    case 1:
+    case TASK_PROGRESS_ID.NOT_STARTED:
       return (
         <span className="text-red-500 transition-all duration-300 ease-in-out hover:text-red-700">
-          Not Started
+          {TASK_PROGRESS_STATUS.NOT_STARTED}
         </span>
       )
-    case 2:
+    case TASK_PROGRESS_ID.IN_PROGRESS:
       return (
         <span className="text-yellow-500 transition-all duration-300 ease-in-out hover:text-yellow-700">
-          In Progress
+          {TASK_PROGRESS_STATUS.IN_PROGRESS}
         </span>
       )
-    case 3:
+    case TASK_PROGRESS_ID.WAITING:
       return (
         <span className="text-blue-500 transition-all duration-300 ease-in-out hover:text-blue-700">
-          In Review / Waiting
+          {TASK_PROGRESS_STATUS.WAITING}
         </span>
       )
-    case 4:
+    case TASK_PROGRESS_ID.COMPLETED:
       return (
         <span className="text-green-500 transition-all duration-300 ease-in-out hover:text-green-700">
-          Completed
+          {TASK_PROGRESS_STATUS.COMPLETED}
         </span>
       )
     default:
       return (
         <span className="text-red-500 transition-all duration-300 ease-in-out hover:text-red-700">
-          Not Started
+          {TASK_PROGRESS_STATUS.NOT_STARTED}
         </span>
       )
   }
 }
 
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
+  const [tasks, setTasks] = useRecoilState<Task[]>(tasksState)
+  const completeTask = (taskId: number): void => {
+    const updatedTasks: Task[] = tasks.map((task) =>
+      task.id === taskId ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED } : task,
+    )
+    setTasks(updatedTasks)
+  }
+
   return (
     <div className="table-body">
       <div className="tableBodyTaskTitle">
-        <span className="material-icons px-2">check_circle</span>
+        <span
+          className={getIconStyle(task.progressOrder)}
+          onClick={(): void => completeTask(task.id)}
+        >
+          check_circle
+        </span>
         {task.title}
       </div>
       <div className="tableBodyDetail">{task.detail}</div>
@@ -55,5 +79,4 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
     </div>
   )
 }
-
 export default TaskListItem

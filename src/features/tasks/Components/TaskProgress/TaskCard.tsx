@@ -1,7 +1,18 @@
 import type { Task } from '../../../../types'
+import { TASK_PROGRESS_ID } from '../../../../constants/app'
+import { useRecoilState } from 'recoil'
+import { tasksState } from '../../TaskAtoms'
 
 interface TaskCardProps {
   task: Task
+}
+
+const getIconStyle = (progressOrder: number): string => {
+  const colorClass =
+    progressOrder === TASK_PROGRESS_ID.COMPLETED ? 'text-green-500' : 'text-gray-500'
+  const cursorClass =
+    progressOrder === TASK_PROGRESS_ID.COMPLETED ? 'cursor-default' : 'cursor-pointer'
+  return `${colorClass} ${cursorClass} text-xl mr-2 material-icons`
 }
 
 const getArrowPositionStyle = (progressOrder: number): string => {
@@ -11,11 +22,27 @@ const getArrowPositionStyle = (progressOrder: number): string => {
 }
 
 const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
+  // Ditambahkan
+  const [tasks, setTasks] = useRecoilState<Task[]>(tasksState)
+
+  // Definisikan function ini
+  const completeTask = (taskId: number): void => {
+    const updatedTasks: Task[] = tasks.map((task) =>
+      task.id === taskId ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED } : task,
+    )
+    setTasks(updatedTasks)
+  }
+
   return (
     <div className="taskCard">
       <div className="taskIcons">
-        <div className="material-icons text-[#0f0e17]">check_circle</div>
-        <div className="material-icons menuIcons">more_vert</div>
+        <div
+          className={`${getIconStyle(task.progressOrder)} text-[#0f0e17]`}
+          onClick={(): void => completeTask(task.id)}
+        >
+          check_circle
+        </div>
+        <div className={`${getIconStyle(task.progressOrder)} menuIcons`}>more_vert</div>
       </div>
       <p className="cardTitle font-semibold">{task.title}</p>
       <div>
@@ -25,26 +52,27 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         <p>Due on {task.dueDate}</p>
       </div>
       <div className={getArrowPositionStyle(task.progressOrder)}>
-        {task.progressOrder === 1 && (
+        {task.progressOrder === TASK_PROGRESS_ID.NOT_STARTED && (
           <button className="material-icons cardIcons bg-yellow-500 hover:bg-yellow-700">
             chevron_right
           </button>
         )}
-        {task.progressOrder !== 1 && task.progressOrder !== 4 && (
-          <>
-            <button
-              className={`material-icons cardIcons ${task.progressOrder === 2 ? 'bg-red-500 hover:bg-red-700' : 'bg-yellow-500 hover:bg-yellow-700'}`}
-            >
-              chevron_left
-            </button>
-            <button
-              className={`material-icons cardIcons ${task.progressOrder === 2 ? 'bg-blue-500 hover:bg-blue-700' : 'bg-green-500 hover:bg-green-700'}`}
-            >
-              chevron_right
-            </button>
-          </>
-        )}
-        {task.progressOrder === 4 && (
+        {task.progressOrder !== TASK_PROGRESS_ID.NOT_STARTED &&
+          task.progressOrder !== TASK_PROGRESS_ID.COMPLETED && (
+            <>
+              <button
+                className={`material-icons cardIcons ${task.progressOrder === TASK_PROGRESS_ID.IN_PROGRESS ? 'bg-red-500 hover:bg-red-700' : 'bg-yellow-500 hover:bg-yellow-700'}`}
+              >
+                chevron_left
+              </button>
+              <button
+                className={`material-icons cardIcons ${task.progressOrder === TASK_PROGRESS_ID.IN_PROGRESS ? 'bg-blue-500 hover:bg-blue-700' : 'bg-green-500 hover:bg-green-700'}`}
+              >
+                chevron_right
+              </button>
+            </>
+          )}
+        {task.progressOrder === TASK_PROGRESS_ID.COMPLETED && (
           <button className="material-icons cardIcons bg-blue-500 hover:bg-blue-700">
             chevron_left
           </button>
