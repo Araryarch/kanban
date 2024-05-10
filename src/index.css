@@ -26,7 +26,7 @@
   }
 
   .task-container {
-    @apply w-3/4 px-5 py-8;
+    @apply flex-1 px-5 py-8;
   }
 
   .task-title {
@@ -46,7 +46,7 @@
   }
 
   .list-container {
-    @apply w-3/4 p-5 text-white;
+    @apply flex-1 p-5 text-white;
   }
 
   .table-head {
