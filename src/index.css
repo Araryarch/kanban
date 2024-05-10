@@ -10,47 +10,114 @@
 
 @layer components {
   .side-text {
-    @apply my-3 flex items-center rounded-md px-3 py-2 text-xl font-semibold no-underline shadow-xl transition-all hover:bg-blue-400 hover:text-blue-950 hover:shadow-sm hover:shadow-slate-500;
+    @apply my-3 flex items-center rounded-md px-3 py-2 text-xl font-semibold no-underline shadow-sm shadow-white transition-all hover:bg-[#eebbc3] hover:text-blue-950 hover:shadow-md hover:shadow-slate-300;
   }
-}
 
-@layer components {
   .containers {
-    @apply flex min-h-screen flex-col bg-blue-500 p-5;
+    @apply flex min-h-screen flex-col bg-[#232946] p-5;
   }
-}
 
-@layer components {
   .icons {
     @apply px-2 text-4xl;
   }
-}
 
-@layer components {
   .list-task {
     @apply -mt-4 mb-[40px] box-border flex w-[60%] items-center justify-center rounded-md bg-[#55C89F] p-2 py-3 text-[#fff] shadow-lg transition-all duration-200 hover:bg-green-500;
   }
-}
 
-@layer components {
   .task-container {
-    @apply w-[80%] px-5 py-8;
+    @apply w-3/4 px-5 py-8;
   }
-}
 
-@layer components {
   .task-title {
-    @apply mb-[40px] text-3xl text-[#55C89F];
+    @apply mb-[40px] text-4xl text-[#fffffe];
+  }
+
+  .link-task {
+    @apply mr-[24px] rounded-lg bg-[#ff8906] p-[16px] text-[#fffffe] no-underline shadow-lg transition-all duration-300 hover:bg-orange-600;
+  }
+
+  .task-button-wrapper {
+    @apply relative mb-[30px] flex gap-5 text-[#0f0e17];
+  }
+
+  .list-button {
+    @apply flex cursor-pointer items-center rounded-md bg-slate-200 p-[16px] text-[16px] shadow-sm  shadow-slate-200 transition-all duration-200 ease-in-out hover:bg-slate-200 hover:shadow-md hover:shadow-slate-300;
+  }
+
+  .list-container {
+    @apply w-3/4 p-5 text-white;
+  }
+
+  .table-head {
+    @apply flex border-b-[1px] border-[#D8D8D8] text-[24px];
+  }
+
+  .tableHeaderTaskName {
+    @apply w-[30%] p-[16px];
+  }
+
+  .tableHeaderDetail {
+    @apply w-[30%] p-[16px];
+  }
+
+  .tableHeaderDueDate {
+    @apply w-[20%] p-[16px];
+  }
+
+  .tableHeaderProgress {
+    @apply w-[15%] p-[16px];
+  }
+
+  .table-body {
+    @apply flex items-center border-b-[1px] border-[#D8D8D8] text-[20px];
+  }
+
+  .tableBodyTaskTitle {
+    @apply overflow-any flex w-[30%] items-center border-r-[1px] border-[#D8D8D8] p-[16px];
+  }
+
+  .tableBodyDetail {
+    @apply overflow-any w-[30%] border-r-[1px] border-[#D8D8D8] p-[16px];
+  }
+
+  .tableBodyDueDate {
+    @apply w-[20%] border-r-[1px] border-[#D8D8D8] p-[16px];
+  }
+
+  .tableBodyprogress {
+    @apply w-[15%] p-[16px];
+  }
+  .taskCard {
+    @apply overflow-any relative my-3 rounded-md bg-[#eebbc3] p-6 text-xl text-[#232946] shadow-md shadow-slate-400;
+  }
+  .taskIcons {
+    @apply flex justify-between;
+  }
+  .menuIcons {
+    @apply cursor-pointer;
+  }
+  .cardTitle {
+    @apply mt-3 py-2 text-3xl;
+  }
+  .cardDetail {
+    @apply mb-8;
+  }
+  .cardIcons {
+    @apply rounded-md bg-[#0f0e17] p-2 text-white shadow-sm transition-all duration-200 ease-in-out hover:bg-slate-800;
   }
 }
 
-@layer components {
-  .link-task {
-    @apply mr-[24px] rounded-lg bg-[#55ACC8] p-[16px] text-[#fff] no-underline shadow-lg transition-all duration-300 hover:bg-blue-400;
-  }
+* {
+  user-select: none;
 }
 
 body {
   font-family: 'Inter';
   margin: 0;
+  background-color: #0f0e17;
+}
+
+.overflow-any {
+  overflow-wrap: anywhere !important;
 }

@@ -1,7 +1,3 @@
-export interface CSSProperties {
-  [key: string]: React.CSSProperties
-}
-
 export interface Task {
   id: number
   title: string
