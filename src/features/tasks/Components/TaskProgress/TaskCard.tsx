@@ -22,6 +22,8 @@ const getArrowPositionStyle = (progressOrder: number): string => {
 
 const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
   const { completeTask } = useTasksAction()
+  const { moveTaskCard } = useTasksAction()
+
   return (
     <div className="taskCard">
       <div className="taskIcons">
@@ -40,29 +42,53 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
       <div className="cardDetail">
         <p>Due on {task.dueDate}</p>
       </div>
+
       <div className={getArrowPositionStyle(task.progressOrder)}>
         {task.progressOrder === TASK_PROGRESS_ID.NOT_STARTED && (
-          <button className="material-icons cardIcons bg-yellow-500 hover:bg-yellow-700">
+          <button
+            className="material-icons cardIcons bg-yellow-500 hover:bg-yellow-700"
+            onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.IN_PROGRESS)}
+          >
             chevron_right
           </button>
         )}
-        {task.progressOrder !== TASK_PROGRESS_ID.NOT_STARTED &&
-          task.progressOrder !== TASK_PROGRESS_ID.COMPLETED && (
-            <>
-              <button
-                className={`material-icons cardIcons ${task.progressOrder === TASK_PROGRESS_ID.IN_PROGRESS ? 'bg-red-500 hover:bg-red-700' : 'bg-yellow-500 hover:bg-yellow-700'}`}
-              >
-                chevron_left
-              </button>
-              <button
-                className={`material-icons cardIcons ${task.progressOrder === TASK_PROGRESS_ID.IN_PROGRESS ? 'bg-blue-500 hover:bg-blue-700' : 'bg-green-500 hover:bg-green-700'}`}
-              >
-                chevron_right
-              </button>
-            </>
-          )}
+        {task.progressOrder === TASK_PROGRESS_ID.IN_PROGRESS && (
+          <>
+            <button
+              className="material-icons cardIcons bg-red-500 hover:bg-red-700"
+              onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.NOT_STARTED)}
+            >
+              chevron_left
+            </button>
+            <button
+              className="material-icons cardIcons bg-blue-500 hover:bg-blue-700"
+              onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.WAITING)}
+            >
+              chevron_right
+            </button>
+          </>
+        )}
+        {task.progressOrder === TASK_PROGRESS_ID.WAITING && (
+          <>
+            <button
+              className="material-icons cardIcons bg-yellow-500 hover:bg-yellow-700"
+              onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.IN_PROGRESS)}
+            >
+              chevron_left
+            </button>
+            <button
+              className="material-icons cardIcons bg-green-500 hover:bg-green-700"
+              onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.COMPLETED)}
+            >
+              chevron_right
+            </button>
+          </>
+        )}
         {task.progressOrder === TASK_PROGRESS_ID.COMPLETED && (
-          <button className="material-icons cardIcons bg-blue-500 hover:bg-blue-700">
+          <button
+            className="material-icons cardIcons bg-blue-500 hover:bg-blue-700"
+            onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.WAITING)}
+          >
             chevron_left
           </button>
         )}
