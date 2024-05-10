@@ -109,6 +109,26 @@
   .cardIcons {
     @apply rounded-md p-2 text-white shadow-md transition-all duration-200 ease-in-out;
   }
+
+  /* ! Froms */
+  .modalContainer {
+    @apply fixed left-[40%] top-[15%] z-10 w-[35%] items-center rounded-md border-2 border-[#232946] bg-[#eebbc3] p-10 text-[#232946] shadow-sm shadow-white;
+  }
+  .form {
+    @apply text-2xl;
+  }
+  .formItem {
+    @apply mb-4 flex flex-col justify-center;
+  }
+  .formInput {
+    @apply my-1 h-10 rounded-md p-2 text-xl;
+  }
+  .formTextArea {
+    @apply h-20 rounded-md text-xl;
+  }
+  .formButton {
+    @apply rounded-md border-none bg-[#0e172c] px-6 py-3 text-xl text-white hover:bg-blue-950;
+  }
 }
 
 * {

@@ -11,3 +11,8 @@ export const TASK_PROGRESS_ID = {
   WAITING: 3,
   COMPLETED: 4,
 }
+
+export const TASK_MODAL_TYPE = {
+  ADD: 'add',
+  EDIT: 'edit',
+}

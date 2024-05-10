@@ -5,3 +5,7 @@ export interface Task {
   dueDate: string
   progressOrder: number
 }
+
+export interface CSSProperties {
+  [key: string]: React.CSSProperties
+}

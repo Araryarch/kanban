@@ -34,7 +34,7 @@ const SideMenu = (): JSX.Element => {
         <span className="material-icons icons">check_box</span>
         <p>Task Progress</p>
       </NavLink>
-      <div className="medsos hover: absolute bottom-10 rounded-full bg-[#fff] p-2 shadow-xl shadow-black transition-all duration-150 ease-in-out hover:bg-slate-200 hover:shadow-sm">
+      <div className="medsos hover: fixed bottom-10 rounded-full bg-[#fff] p-2 shadow-xl shadow-black transition-all duration-150 ease-in-out hover:bg-slate-200 hover:shadow-sm">
         <a href="https://github.com/Araryarch/kanban">
           <svg
             xmlns="http://www.w3.org/2000/svg"
