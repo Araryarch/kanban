@@ -1,7 +1,6 @@
 import type { Task } from '../../../../types'
 import { TASK_PROGRESS_ID } from '../../../../constants/app'
-import { useRecoilState } from 'recoil'
-import { tasksState } from '../../TaskAtoms'
+import { useTasksAction } from '../../hooks/Tasks'
 
 interface TaskCardProps {
   task: Task
@@ -22,17 +21,7 @@ const getArrowPositionStyle = (progressOrder: number): string => {
 }
 
 const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
-  // Ditambahkan
-  const [tasks, setTasks] = useRecoilState<Task[]>(tasksState)
-
-  // Definisikan function ini
-  const completeTask = (taskId: number): void => {
-    const updatedTasks: Task[] = tasks.map((task) =>
-      task.id === taskId ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED } : task,
-    )
-    setTasks(updatedTasks)
-  }
-
+  const { completeTask } = useTasksAction()
   return (
     <div className="taskCard">
       <div className="taskIcons">
