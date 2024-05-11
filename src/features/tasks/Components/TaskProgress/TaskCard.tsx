@@ -55,7 +55,6 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
       <div className="cardDetail">
         <p>Due on {task.dueDate}</p>
       </div>
-
       <div className={getArrowPositionStyle(task.progressOrder)}>
         {task.progressOrder === TASK_PROGRESS_ID.NOT_STARTED && (
           <button
