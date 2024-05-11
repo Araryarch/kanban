@@ -30,7 +30,6 @@ const getArrowPositionStyle = (progressOrder: number): string => {
 const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
   const { completeTask, moveTaskCard } = useTasksAction()
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-
   return (
     <div className="taskCard">
       <div className="taskIcons">
