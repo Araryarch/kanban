@@ -1,27 +1,15 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 interface TaskMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>
   responsive: string
-  openModal: () => void
 }
 
-const TaskMenu: React.FC<TaskMenuProps> = ({
-  setIsMenuOpen,
-  responsive,
-  openModal,
-}: TaskMenuProps): JSX.Element => {
-  const handleOpenModal = () => {
-    openModal()
-  }
-
+const TaskMenu = ({ setIsMenuOpen, responsive }: TaskMenuProps): JSX.Element => {
   return (
     <div className={`${responsive} menu`}>
       <div className="close-wrapper flex justify-end gap-2 p-1">
-        <div
-          className="menuItem flex-1 hover:bg-white hover:text-[#3da9fc]"
-          onClick={handleOpenModal}
-        >
+        <div className="menuItem flex-1 hover:bg-white hover:text-[#3da9fc]">
           <span className="material-icons px-1">edit</span>
           Edit
         </div>
