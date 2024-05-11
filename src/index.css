@@ -132,13 +132,13 @@
 
   /* ! TaskMenu */
   .menu {
-    @apply absolute right-3 z-10 rounded-md border-2 border-slate-400 bg-[#fec7d7] px-4 py-2 text-[#0e172c];
+    @apply absolute right-3 z-10 rounded-md border-2 border-slate-400 bg-[#232946] px-2 py-1 text-[#fffffe] shadow-md shadow-slate-700 transition-all duration-300 ease-in-out;
   }
   .menuItem {
-    @apply mb-2 flex cursor-pointer items-center px-3 py-1;
+    @apply mb-2 flex cursor-pointer items-center rounded-md border-2 border-slate-400 px-3 py-1 shadow-md shadow-black transition-all duration-300 ease-in-out;
   }
   .closeIcon {
-    @apply absolute right-0 top-0 rounded-md border-2 border-red-400 p-1 text-red-600 hover:bg-pink-500 hover:text-red-900;
+    @apply h-fit rounded-md border-2 border-red-400 p-1 text-red-600 shadow-md shadow-red-800 transition-all duration-300 ease-in-out hover:bg-pink-500 hover:text-red-900;
   }
 }
 

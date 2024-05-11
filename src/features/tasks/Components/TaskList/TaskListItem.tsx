@@ -3,6 +3,8 @@ import TaskMenu from '../shared/TaskMenu'
 import type { Task } from '../../../../types'
 import { TASK_PROGRESS_STATUS, TASK_PROGRESS_ID } from '../../../../constants/app'
 import { useTasksAction } from '../../hooks/Tasks'
+import TaskForm from '../shared/TaskForm'
+
 interface TaskListItemProps {
   task: Task
 }
@@ -59,6 +61,13 @@ const getProgressCategory = (progressOrder: number): JSX.Element => {
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
   const { completeTask } = useTasksAction()
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+  const openModal = () => {
+    setIsMenuOpen(true)
+    setIsModalOpen(false)
+    console.log('ngeri')
+  }
 
   return (
     <div className="table-body">
@@ -75,16 +84,14 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
       <div className="tableBodyDueDate">{task.dueDate}</div>
       <div className="tableBodyprogress">{getProgressCategory(task.progressOrder)}</div>
       <div>
-        <span
-          className="material-icons cursor-pointer"
-          onClick={(): void => {
-            setIsMenuOpen(true)
-          }}
-        >
+        <span className="material-icons cursor-pointer" onClick={() => setIsMenuOpen(true)}>
           more_horiz
         </span>
       </div>
-      {isMenuOpen && <TaskMenu setIsMenuOpen={setIsMenuOpen} />}
+      {isMenuOpen && (
+        <TaskMenu responsive={''} setIsMenuOpen={setIsMenuOpen} openModal={openModal} />
+      )}
+      {isModalOpen && <TaskForm setIsModalOpen={setIsModalOpen} />}
     </div>
   )
 }
