@@ -129,6 +129,17 @@
   .formButton {
     @apply rounded-md border-none bg-[#0e172c] px-6 py-3 text-xl text-white hover:bg-blue-950;
   }
+
+  /* ! TaskMenu */
+  .menu {
+    @apply absolute right-3 z-10 rounded-md border-2 border-slate-400 bg-[#fec7d7] px-4 py-2 text-[#0e172c];
+  }
+  .menuItem {
+    @apply mb-2 flex cursor-pointer items-center px-3 py-1;
+  }
+  .closeIcon {
+    @apply absolute right-0 top-0 rounded-md border-2 border-red-400 p-1 text-red-600 hover:bg-pink-500 hover:text-red-900;
+  }
 }
 
 * {
