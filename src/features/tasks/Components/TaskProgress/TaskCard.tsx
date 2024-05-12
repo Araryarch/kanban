@@ -5,7 +5,6 @@ import { useState } from 'react'
 import TaskMenu from '../shared/TaskMenu'
 interface TaskCardProps {
   task: Task
-  taskData?: Task
 }
 
 const getIconStyle = (progressOrder: number): string => {
@@ -28,11 +27,7 @@ const getArrowPositionStyle = (progressOrder: number): string => {
   return `flex ${justifyContentValue}`
 }
 
-const TaskCard = ({ task, taskData }: TaskCardProps): JSX.Element => {
-  if (taskData) {
-    console.log('bjir aku nyasar')
-  }
-
+const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
   const { completeTask, moveTaskCard } = useTasksAction()
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   return (
