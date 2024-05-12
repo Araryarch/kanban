@@ -15,6 +15,7 @@ const TaskModal = ({
   type,
   setIsModalOpen,
   defaultProgressOrder,
+  taskData,
 }: TaskModalProps): JSX.Element => {
   return (
     <div className="modalContainer">
@@ -33,6 +34,8 @@ const TaskModal = ({
         type={type}
         defaultProgressOrder={defaultProgressOrder}
         setIsModalOpen={setIsModalOpen}
+        taskData={taskData}
+        taskId={taskData?.id}
       />
     </div>
   )

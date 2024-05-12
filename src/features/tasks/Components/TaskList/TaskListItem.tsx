@@ -63,12 +63,6 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
-  const openModal = () => {
-    setIsMenuOpen(true)
-    setIsModalOpen(false)
-    console.log('ngeri')
-  }
-
   return (
     <div className="table-body">
       <div className="tableBodyTaskTitle">
@@ -88,10 +82,8 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
           more_horiz
         </span>
       </div>
-      {isMenuOpen && (
-        <TaskMenu responsive={''} setIsMenuOpen={setIsMenuOpen} openModal={openModal} />
-      )}
-      {isModalOpen && <TaskForm setIsModalOpen={setIsModalOpen} />}
+      {isMenuOpen && <TaskMenu responsive={''} setIsMenuOpen={setIsMenuOpen} taskData={task} />}
+      {isModalOpen && <TaskForm setIsModalOpen={setIsModalOpen} taskId={task.id} />}
     </div>
   )
 }

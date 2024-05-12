@@ -39,6 +39,7 @@ const TaskForm = ({
       addTask(title, detail, dueDate, progressOrder)
     }
     if (type === TASK_MODAL_TYPE.EDIT && taskId !== undefined) {
+      console.log('aku diedit jir')
       const updatedTask: Task = {
         id: taskId,
         title,
