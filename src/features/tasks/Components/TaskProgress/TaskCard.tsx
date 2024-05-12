@@ -4,6 +4,7 @@ import { useTasksAction } from '../../hooks/Tasks'
 import { useState } from 'react'
 import TaskMenu from '../shared/TaskMenu'
 interface TaskCardProps {
+  taskData?: Task
   task: Task
 }
 
