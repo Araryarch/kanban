@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { TASK_PROGRESS_ID, TASK_PROGRESS_STATUS, TASK_MODAL_TYPE } from '../../../../constants/app'
 import { useTasksAction } from '../../hooks/Tasks'
 import type { Dispatch, SetStateAction } from 'react'
@@ -8,6 +8,7 @@ interface TaskFormProps {
   defaultProgressOrder?: number
   setIsModalOpen: Dispatch<SetStateAction<boolean>>
   taskId?: number
+  taskData?: Task
 }
 
 const TaskForm = ({
@@ -15,6 +16,7 @@ const TaskForm = ({
   defaultProgressOrder,
   setIsModalOpen,
   taskId,
+  taskData,
 }: TaskFormProps): JSX.Element => {
   const [title, setTitle] = useState<string>('')
   const [detail, setDetail] = useState<string>('')
@@ -22,6 +24,16 @@ const TaskForm = ({
   const [progressOrder, setProgressOrder] = useState<number>(defaultProgressOrder || 0)
 
   const { addTask, editTask } = useTasksAction()
+
+  useEffect(() => {
+    if (taskData) {
+      setTitle(taskData.title || '')
+      setDetail(taskData.detail || '')
+      setDueDate(taskData.dueDate || '')
+      setProgressOrder(taskData.progressOrder || 1)
+    }
+  }, [taskData])
+
   const handleSubmit = (): void => {
     if (type === TASK_MODAL_TYPE.ADD) {
       addTask(title, detail, dueDate, progressOrder)

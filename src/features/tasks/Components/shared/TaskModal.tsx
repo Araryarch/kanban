@@ -1,11 +1,13 @@
 import type { Dispatch, SetStateAction } from 'react'
 import TaskForm from './TaskForm'
+import { Task } from '../../../../types'
 
 interface TaskModalProps {
   headingTitle: string
   type: string
   setIsModalOpen: Dispatch<SetStateAction<boolean>>
   defaultProgressOrder: number
+  taskData?: Task
 }
 
 const TaskModal = ({

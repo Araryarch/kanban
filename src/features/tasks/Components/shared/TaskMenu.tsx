@@ -1,12 +1,14 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import TaskModal from '../shared/TaskModal'
 import { TASK_MODAL_TYPE, TASK_PROGRESS_ID } from '../../../../constants/app'
+import { Task } from '../../../../types'
 interface TaskMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>
   responsive: string
+  taskData: Task
 }
 
-const TaskMenu = ({ setIsMenuOpen, responsive }: TaskMenuProps): JSX.Element => {
+const TaskMenu = ({ setIsMenuOpen, responsive, taskData }: TaskMenuProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   return (
     <div className={`${responsive} menu`}>
@@ -31,6 +33,7 @@ const TaskMenu = ({ setIsMenuOpen, responsive }: TaskMenuProps): JSX.Element => 
           type={TASK_MODAL_TYPE.EDIT}
           headingTitle="Edit your task"
           defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
+          taskData={taskData}
         />
       )}
     </div>
