@@ -32,6 +32,7 @@ const TaskCard = ({ task, taskData }: TaskCardProps): JSX.Element => {
   if (taskData) {
     console.log('bjir aku nyasar')
   }
+
   const { completeTask, moveTaskCard } = useTasksAction()
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   return (
