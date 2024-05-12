@@ -30,9 +30,9 @@ const TaskForm = ({
       setTitle(taskData.title || '')
       setDetail(taskData.detail || '')
       setDueDate(taskData.dueDate || '')
-      setProgressOrder(taskData.progressOrder || 1)
+      setProgressOrder(taskData.progressOrder || defaultProgressOrder || 0)
     }
-  }, [taskData])
+  }, [taskData, defaultProgressOrder])
 
   const handleSubmit = (): void => {
     if (type === TASK_MODAL_TYPE.ADD) {
@@ -90,7 +90,8 @@ const TaskForm = ({
         <label>Progress：</label>
         <select
           className="formInput"
-          defaultValue={progressOrder}
+          defaultValue={1}
+          value={progressOrder}
           onChange={(e): void => {
             setProgressOrder(Number(e.target.value))
           }}
