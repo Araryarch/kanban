@@ -32,35 +32,35 @@ const TaskList = (): JSX.Element => {
         {isFilter && (
           <div className="filter-wrapper flex gap-5 text-white">
             <button
-              className="list-button bg-[#eebbc3] text-[#232946] hover:bg-[#d7a7ae]"
+              className="list-button bg-[#eebbc3] text-[#232946] hover:bg-[#d7a7ae] focus:bg-[#9d757a] focus:text-white"
               onClick={() => setFilter(undefined)}
             >
               <span className="material-icons px-1">menu</span>
               All Task
             </button>
             <button
-              className="list-button bg-red-600 hover:bg-red-800"
+              className="list-button bg-red-600 hover:bg-red-800 focus:bg-red-950"
               onClick={() => setFilter(TASK_PROGRESS_ID.NOT_STARTED)}
             >
               <span className="material-icons px-1">hourglass_disabled</span>
               Not Started
             </button>
             <button
-              className="list-button bg-yellow-600 hover:bg-yellow-800"
+              className="list-button bg-yellow-600 hover:bg-yellow-800 focus:bg-yellow-950"
               onClick={() => setFilter(TASK_PROGRESS_ID.IN_PROGRESS)}
             >
               <span className="material-icons px-1">hourglass_top</span>
               In Progress
             </button>
             <button
-              className="list-button bg-blue-600 hover:bg-blue-800"
+              className="list-button bg-blue-600 hover:bg-blue-800 focus:bg-blue-950"
               onClick={() => setFilter(TASK_PROGRESS_ID.WAITING)}
             >
               <span className="material-icons px-1">pending</span>
               Waiting
             </button>
             <button
-              className="list-button bg-green-600 hover:bg-green-800"
+              className="list-button bg-green-600 hover:bg-green-800 focus:bg-green-950"
               onClick={() => setFilter(TASK_PROGRESS_ID.COMPLETED)}
             >
               <span className="material-icons px-1">done_all</span>
