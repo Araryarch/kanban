@@ -18,7 +18,7 @@ const TaskModal = ({
   taskData,
 }: TaskModalProps): JSX.Element => {
   return (
-    <div className="modalContainer">
+    <div className="modalContainer font-semibold">
       <div className="flex items-center justify-between py-2">
         <h1>{headingTitle}</h1>
         <span
