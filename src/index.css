@@ -45,7 +45,7 @@
   }
 
   .list-button {
-    @apply flex cursor-pointer items-center rounded-md bg-slate-200 p-[16px] text-[16px] shadow-sm  shadow-slate-200 transition-all duration-200 ease-in-out hover:bg-slate-200 hover:shadow-md hover:shadow-slate-300;
+    @apply flex cursor-pointer items-center rounded-md bg-slate-200 p-[16px] text-[16px] shadow-sm shadow-slate-200 transition-all duration-500 ease-in-out hover:shadow-md hover:shadow-[#ff8906];
   }
 
   .list-container {
