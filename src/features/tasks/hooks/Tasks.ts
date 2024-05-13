@@ -8,6 +8,7 @@ interface useTaskActionType {
   moveTaskCard: (taskId: number, nextStatusId: number) => void
   addTask: (title: string, detail: string, dueDate: string, progressOrder: number) => void
   editTask: (taskId: number, updatedTask: Task) => void
+  deleteTask: (taskId: number) => void
 }
 
 export const useTasksAction = (): useTaskActionType => {
@@ -48,10 +49,16 @@ export const useTasksAction = (): useTaskActionType => {
     setTasks(updatedTasks)
   }
 
+  const deleteTask = (taskId: number): void => {
+    const updatedTasks: Task[] = tasks.filter((task) => task.id !== taskId)
+    setTasks(updatedTasks)
+  }
+
   return {
     completeTask,
     moveTaskCard,
     addTask,
     editTask,
+    deleteTask,
   }
 }

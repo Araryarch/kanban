@@ -4,12 +4,22 @@ import { TASK_MODAL_TYPE, TASK_PROGRESS_ID } from '../../../../constants/app'
 import { Task } from '../../../../types'
 interface TaskMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>
+  onDeleteTask: (taskId: number) => void
   responsive: string
   taskData: Task
 }
 
-const TaskMenu = ({ setIsMenuOpen, responsive, taskData }: TaskMenuProps): JSX.Element => {
+const TaskMenu = ({
+  setIsMenuOpen,
+  responsive,
+  taskData,
+  onDeleteTask,
+}: TaskMenuProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const handleDeleteClick = () => {
+    onDeleteTask(taskData.id)
+    setIsMenuOpen(false)
+  }
   return (
     <div className={`${responsive} menu`}>
       <div className="close-wrapper flex justify-end gap-2 p-1">
@@ -24,7 +34,7 @@ const TaskMenu = ({ setIsMenuOpen, responsive, taskData }: TaskMenuProps): JSX.E
           close
         </span>
       </div>
-      <div className="menuItem hover:bg-white hover:text-red-600">
+      <div className="menuItem hover:bg-white hover:text-red-600" onClick={handleDeleteClick}>
         <span className="material-icons px-1">delete</span>Delete
       </div>
       {isModalOpen && (

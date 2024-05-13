@@ -59,9 +59,13 @@ const getProgressCategory = (progressOrder: number): JSX.Element => {
 }
 
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
-  const { completeTask } = useTasksAction()
+  const { completeTask, deleteTask } = useTasksAction()
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+  const onDeleteTask = (): void => {
+    deleteTask(task.id)
+  }
 
   return (
     <div className="table-body">
@@ -82,7 +86,14 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
           more_horiz
         </span>
       </div>
-      {isMenuOpen && <TaskMenu responsive={''} setIsMenuOpen={setIsMenuOpen} taskData={task} />}
+      {isMenuOpen && (
+        <TaskMenu
+          responsive={''}
+          setIsMenuOpen={setIsMenuOpen}
+          taskData={task}
+          onDeleteTask={onDeleteTask}
+        />
+      )}
       {isModalOpen && <TaskForm setIsModalOpen={setIsModalOpen} taskId={task.id} />}
     </div>
   )
