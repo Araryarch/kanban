@@ -3,6 +3,7 @@ import { TASK_PROGRESS_ID, TASK_PROGRESS_STATUS, TASK_MODAL_TYPE } from '../../.
 import { useTasksAction } from '../../hooks/Tasks'
 import type { Dispatch, SetStateAction } from 'react'
 import type { Task } from '../../../../types'
+
 interface TaskFormProps {
   type?: string
   defaultProgressOrder?: number

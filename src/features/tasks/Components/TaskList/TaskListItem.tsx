@@ -87,4 +87,5 @@ const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
     </div>
   )
 }
+
 export default TaskListItem
