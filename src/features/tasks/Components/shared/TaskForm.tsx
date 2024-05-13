@@ -64,6 +64,7 @@ const TaskForm = ({
             setTitle(e.target.value)
           }}
           className="formInput"
+          required
         />
       </div>
       <div className="formItem">
@@ -74,6 +75,7 @@ const TaskForm = ({
             setDetail(e.target.value)
           }}
           className="formTextArea"
+          required
         />
       </div>
       <div className="formItem">
@@ -85,6 +87,7 @@ const TaskForm = ({
             setDueDate(e.target.value)
           }}
           className="formInput"
+          required
         />
       </div>
       <div className="formItem">
@@ -96,6 +99,7 @@ const TaskForm = ({
           onChange={(e): void => {
             setProgressOrder(Number(e.target.value))
           }}
+          required
         >
           <option value={TASK_PROGRESS_ID.NOT_STARTED}>{TASK_PROGRESS_STATUS.NOT_STARTED}</option>
           <option value={TASK_PROGRESS_ID.IN_PROGRESS}>{TASK_PROGRESS_STATUS.IN_PROGRESS}</option>
