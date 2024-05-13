@@ -22,7 +22,7 @@ const TaskModal = ({
       <div className="flex items-center justify-between py-2">
         <h1>{headingTitle}</h1>
         <span
-          className="material-icons cursor-pointer text-4xl"
+          className="material-icons cursor-pointer rounded-md bg-red-500 px-2 py-1 text-4xl hover:bg-red-700"
           onClick={(): void => {
             setIsModalOpen(false)
           }}

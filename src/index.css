@@ -112,7 +112,7 @@
 
   /* ! Froms */
   .modalContainer {
-    @apply fixed left-[40%] top-[15%] z-10 w-[35%] items-center rounded-md border-2 border-[#232946] bg-[#eebbc3] p-10 text-[#232946] shadow-sm shadow-white;
+    @apply fixed left-[40%] top-[15%] z-10 w-[35%] items-center rounded-md border-2 border-[#121629] bg-[#232946] p-10 text-[#fffffe] shadow-sm shadow-white;
   }
   .form {
     @apply text-2xl;
@@ -121,13 +121,13 @@
     @apply mb-4 flex flex-col justify-center;
   }
   .formInput {
-    @apply my-1 h-10 rounded-md p-2 text-xl;
+    @apply my-1 box-border h-10 rounded-md bg-[#eebbc3] px-2 text-xl text-[#232946] shadow-md shadow-black;
   }
   .formTextArea {
-    @apply h-20 rounded-md text-xl;
+    @apply box-border h-20 rounded-md bg-[#eebbc3] px-2 py-1 text-xl text-[#232946] shadow-md shadow-black;
   }
   .formButton {
-    @apply rounded-md border-none bg-[#0e172c] px-6 py-3 text-xl text-white hover:bg-blue-950;
+    @apply rounded-md border-none bg-[#fffffe] px-6 py-3 text-xl text-[#232946] shadow-md shadow-black hover:bg-slate-200;
   }
 
   /* ! TaskMenu */
