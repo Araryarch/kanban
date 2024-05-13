@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useRecoilState } from 'recoil'
+import { modalState } from '../state/state'
 import { tasksState } from '../../TaskAtoms'
 import TaskListItem from './TaskListItem'
 import type { Task } from '../../../../types'
@@ -8,7 +9,7 @@ import { TASK_PROGRESS_ID, TASK_MODAL_TYPE } from '../../../../constants/app'
 
 const TaskList = (): JSX.Element => {
   const tasks: Task[] = useRecoilValue(tasksState)
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useRecoilState<boolean>(modalState)
   const [isFilter, setIsFilter] = useState<boolean>(false)
   const [filter, setFilter] = useState<number>()
   const [activeFilters, setActiveFilters] = useState<{ [key: string]: boolean }>({

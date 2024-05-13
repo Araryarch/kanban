@@ -1,7 +1,8 @@
 import type { Task } from '../../../../types'
 import { TASK_PROGRESS_ID } from '../../../../constants/app'
 import { useTasksAction } from '../../hooks/Tasks'
-import { useState } from 'react'
+import { menuState } from '../state/state'
+import { useRecoilState } from 'recoil'
 import TaskMenu from '../shared/TaskMenu'
 
 interface TaskCardProps {
@@ -30,7 +31,11 @@ const getArrowPositionStyle = (progressOrder: number): string => {
 
 const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
   const { completeTask, moveTaskCard } = useTasksAction()
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+  const [isMenuOpen, setIsMenuOpen] = useRecoilState<boolean>(menuState)
+  const handleDeleteTask = (taskId: number): void => {
+    console.log('Deleting task with ID:', taskId)
+  }
+
   return (
     <div className="taskCard">
       <div className="taskIcons">
@@ -107,7 +112,12 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         )}
       </div>
       {isMenuOpen && (
-        <TaskMenu responsive={'top-0'} setIsMenuOpen={setIsMenuOpen} taskData={task} />
+        <TaskMenu
+          responsive={'top-0'}
+          setIsMenuOpen={setIsMenuOpen}
+          taskData={task}
+          onDeleteTask={handleDeleteTask}
+        />
       )}
     </div>
   )

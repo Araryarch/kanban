@@ -1,9 +1,10 @@
-import { useState } from 'react'
 import TaskMenu from '../shared/TaskMenu'
 import type { Task } from '../../../../types'
 import { TASK_PROGRESS_STATUS, TASK_PROGRESS_ID } from '../../../../constants/app'
 import { useTasksAction } from '../../hooks/Tasks'
 import TaskForm from '../shared/TaskForm'
+import { modalState, menuState } from '../state/state'
+import { useRecoilState } from 'recoil'
 
 interface TaskListItemProps {
   task: Task
@@ -60,8 +61,8 @@ const getProgressCategory = (progressOrder: number): JSX.Element => {
 
 const TaskListItem = ({ task }: TaskListItemProps): JSX.Element => {
   const { completeTask, deleteTask } = useTasksAction()
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isMenuOpen, setIsMenuOpen] = useRecoilState<boolean>(menuState)
+  const [isModalOpen, setIsModalOpen] = useRecoilState<boolean>(modalState)
 
   const onDeleteTask = (): void => {
     deleteTask(task.id)

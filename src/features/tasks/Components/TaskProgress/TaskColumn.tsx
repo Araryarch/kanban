@@ -2,7 +2,8 @@ import TaskCard from './TaskCard'
 import type { Task } from '../../../../types'
 import TaskModal from '../shared/TaskModal'
 import { TASK_MODAL_TYPE, TASK_PROGRESS_ID } from '../../../../constants/app'
-import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { modalState } from '../state/state'
 interface TaskColumnProps {
   columnTitle: string
   tasks: Task[]
@@ -37,7 +38,7 @@ const newProgress = (columnTitle: string): number => {
 }
 
 const TaskColumn = ({ columnTitle, tasks }: TaskColumnProps): JSX.Element => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useRecoilState<boolean>(modalState)
   return (
     <div className="w-[22%]">
       <div className="p-[0px 4px] flex items-center justify-between">

@@ -1,4 +1,6 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
+import { modalState } from '../state/state'
+import { useRecoilState } from 'recoil'
 import TaskModal from '../shared/TaskModal'
 import { TASK_MODAL_TYPE, TASK_PROGRESS_ID } from '../../../../constants/app'
 import { Task } from '../../../../types'
@@ -15,7 +17,7 @@ const TaskMenu = ({
   taskData,
   onDeleteTask,
 }: TaskMenuProps): JSX.Element => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useRecoilState<boolean>(modalState)
   const handleDeleteClick = () => {
     onDeleteTask(taskData.id)
     setIsMenuOpen(false)
