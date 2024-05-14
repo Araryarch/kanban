@@ -107,7 +107,7 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         )}
       </div>
       {isMenuOpen && (
-        <TaskMenu responsive={'top-0'} setIsMenuOpen={setIsMenuOpen} taskData={task} />
+        <TaskMenu responsive={'top-0'} setIsMenuOpen={setIsMenuOpen} taskData={task} onDeleteTask={(): void => {}} />
       )}
     </div>
   )
