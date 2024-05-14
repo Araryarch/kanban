@@ -29,8 +29,11 @@ const getArrowPositionStyle = (progressOrder: number): string => {
 }
 
 const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
-  const { completeTask, moveTaskCard } = useTasksAction()
+  const { completeTask, moveTaskCard, deleteTask } = useTasksAction()
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+  const handleDeleteClick = () => {
+    deleteTask(task.id)
+  }
   return (
     <div className="taskCard">
       <div className="taskIcons">
@@ -107,7 +110,12 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         )}
       </div>
       {isMenuOpen && (
-        <TaskMenu responsive={'top-0'} setIsMenuOpen={setIsMenuOpen} taskData={task} onDeleteTask={(): void => {}} />
+        <TaskMenu
+          responsive={'top-0'}
+          setIsMenuOpen={setIsMenuOpen}
+          taskData={task}
+          onDeleteTask={handleDeleteClick}
+        />
       )}
     </div>
   )
