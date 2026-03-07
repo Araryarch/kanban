@@ -11,15 +11,15 @@ interface TaskCardProps {
 const getIconStyle = (progressOrder: number): string => {
   const colorClass =
     progressOrder === TASK_PROGRESS_ID.COMPLETED
-      ? 'text-green-500 checklist'
+      ? 'text-green-500 hover:text-green-600'
       : progressOrder === TASK_PROGRESS_ID.WAITING
-        ? 'text-blue-500 checklist'
+        ? 'text-blue-500 hover:text-blue-600'
         : progressOrder === TASK_PROGRESS_ID.IN_PROGRESS
-          ? 'text-yellow-500 checklist'
-          : 'text-red-500 checklist'
+          ? 'text-yellow-500 hover:text-yellow-600'
+          : 'text-red-500 hover:text-red-600'
   const cursorClass =
     progressOrder === TASK_PROGRESS_ID.COMPLETED ? 'cursor-default' : 'cursor-pointer'
-  return `${colorClass} ${cursorClass} text-xl mr-2 material-icons`
+  return `${colorClass} ${cursorClass} text-2xl mr-2 material-icons transition-all`
 }
 
 const getArrowPositionStyle = (progressOrder: number): string => {
@@ -38,13 +38,13 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
     <div className="taskCard">
       <div className="taskIcons">
         <div
-          className={`${getIconStyle(task.progressOrder)} text-[#0f0e17]`}
+          className={`${getIconStyle(task.progressOrder)}`}
           onClick={(): void => completeTask(task.id)}
         >
           check_circle
         </div>
         <div
-          className="material-icons menuIcons"
+          className="material-icons menuIcons text-slate-600 dark:text-slate-300"
           onClick={(): void => {
             setIsMenuOpen(true)
           }}
@@ -52,17 +52,19 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
           more_vert
         </div>
       </div>
-      <p className="cardTitle font-semibold">{task.title}</p>
+      <p className="cardTitle">{task.title}</p>
       <div>
-        <p>{task.detail}</p>
+        <p className="text-sm text-slate-600 dark:text-slate-400">{task.detail}</p>
       </div>
       <div className="cardDetail">
-        <p>Due on {task.dueDate}</p>
+        <p className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-500">
+          Due: {task.dueDate}
+        </p>
       </div>
       <div className={getArrowPositionStyle(task.progressOrder)}>
         {task.progressOrder === TASK_PROGRESS_ID.NOT_STARTED && (
           <button
-            className="material-icons cardIcons bg-yellow-500 hover:bg-yellow-700"
+            className="material-icons cardIcons border-yellow-600 text-yellow-600"
             onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.IN_PROGRESS)}
           >
             chevron_right
@@ -71,13 +73,13 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         {task.progressOrder === TASK_PROGRESS_ID.IN_PROGRESS && (
           <>
             <button
-              className="material-icons cardIcons bg-red-500 hover:bg-red-700"
+              className="material-icons cardIcons border-red-600 text-red-600"
               onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.NOT_STARTED)}
             >
               chevron_left
             </button>
             <button
-              className="material-icons cardIcons bg-blue-500 hover:bg-blue-700"
+              className="material-icons cardIcons border-blue-600 text-blue-600"
               onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.WAITING)}
             >
               chevron_right
@@ -87,13 +89,13 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         {task.progressOrder === TASK_PROGRESS_ID.WAITING && (
           <>
             <button
-              className="material-icons cardIcons bg-yellow-500 hover:bg-yellow-700"
+              className="material-icons cardIcons border-yellow-600 text-yellow-600"
               onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.IN_PROGRESS)}
             >
               chevron_left
             </button>
             <button
-              className="material-icons cardIcons bg-green-500 hover:bg-green-700"
+              className="material-icons cardIcons border-green-600 text-green-600"
               onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.COMPLETED)}
             >
               chevron_right
@@ -102,7 +104,7 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         )}
         {task.progressOrder === TASK_PROGRESS_ID.COMPLETED && (
           <button
-            className="material-icons cardIcons bg-blue-500 hover:bg-blue-700"
+            className="material-icons cardIcons border-blue-600 text-blue-600"
             onClick={(): void => moveTaskCard(task.id, TASK_PROGRESS_ID.WAITING)}
           >
             chevron_left

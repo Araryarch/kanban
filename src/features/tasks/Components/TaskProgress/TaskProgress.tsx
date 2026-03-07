@@ -20,8 +20,8 @@ const TaskProgress = (): JSX.Element => {
 
   return (
     <div className="task-container">
-      <h1 className="task-title">Task Progress</h1>
-      <div className="flex justify-around">
+      <h1 className="task-title">Board</h1>
+      <div className="flex justify-between gap-6">
         <TaskColumn columnTitle={TASK_PROGRESS_STATUS.NOT_STARTED} tasks={notStartedTasks} />
         <TaskColumn columnTitle={TASK_PROGRESS_STATUS.IN_PROGRESS} tasks={inProgressTasks} />
         <TaskColumn columnTitle={TASK_PROGRESS_STATUS.WAITING} tasks={waitingTasks} />

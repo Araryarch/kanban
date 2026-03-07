@@ -43,7 +43,7 @@ const TaskList = (): JSX.Element => {
 
   return (
     <div className="list-container">
-      <h1 className="task-title">Your Tasks</h1>
+      <h1 className="task-title">Tasks</h1>
       <div className="task-button-wrapper">
         <button
           className="list-button"
@@ -51,58 +51,54 @@ const TaskList = (): JSX.Element => {
             setIsModalOpen(true)
           }}
         >
-          <span className="material-icons px-1">add</span>Add task
+          <span className="material-icons text-base">add</span>
+          New Task
         </button>
         <button className="list-button" onClick={() => setIsFilter(!isFilter)}>
-          <span className="material-icons px-1">sort</span>
-          Filter tasks
+          <span className="material-icons text-base">filter_list</span>
+          Filter
         </button>
         {isFilter && (
-          <div className="filter-wrapper flex gap-5 text-white">
+          <div className="flex flex-wrap gap-3">
             <button
-              className={`list-button bg-[#232946] hover:bg-[#232946] ${filterClassName('all')}`}
+              className={`list-button ${activeFilters.all ? 'border-slate-900 bg-slate-900 text-white dark:border-white dark:bg-white dark:text-slate-900' : ''}`}
               onClick={() => handleClick(undefined, 'all')}
             >
-              <span className="material-icons px-1">menu</span>
-              All Task
+              All
             </button>
             <button
-              className={`list-button bg-red-600 hover:bg-red-600 ${filterClassName('notStarted')}`}
+              className={`list-button ${activeFilters.notStarted ? 'border-red-600 bg-red-600 text-white' : ''}`}
               onClick={() => handleClick(TASK_PROGRESS_ID.NOT_STARTED, 'notStarted')}
             >
-              <span className="material-icons px-1">hourglass_disabled</span>
               Not Started
             </button>
             <button
-              className={`list-button bg-yellow-600 hover:bg-yellow-600 ${filterClassName('inProgress')}`}
+              className={`list-button ${activeFilters.inProgress ? 'border-yellow-600 bg-yellow-600 text-white' : ''}`}
               onClick={() => handleClick(TASK_PROGRESS_ID.IN_PROGRESS, 'inProgress')}
             >
-              <span className="material-icons px-1">hourglass_top</span>
               In Progress
             </button>
             <button
-              className={`list-button bg-blue-600 hover:bg-blue-600 ${filterClassName('waiting')}`}
+              className={`list-button ${activeFilters.waiting ? 'border-blue-600 bg-blue-600 text-white' : ''}`}
               onClick={() => handleClick(TASK_PROGRESS_ID.WAITING, 'waiting')}
             >
-              <span className="material-icons px-1">pending</span>
               Waiting
             </button>
             <button
-              className={`list-button bg-green-600 hover:bg-green-600 ${filterClassName('completed')}`}
+              className={`list-button ${activeFilters.completed ? 'border-green-600 bg-green-600 text-white' : ''}`}
               onClick={() => handleClick(TASK_PROGRESS_ID.COMPLETED, 'completed')}
             >
-              <span className="material-icons px-1">done_all</span>
               Completed
             </button>
           </div>
         )}
       </div>
-      <div>
+      <div className="overflow-hidden border border-slate-300 dark:border-slate-700">
         <div className="table-head">
-          <div className="tableHeaderTaskName">Task Name</div>
-          <div className="tableHeaderDetail">Detail</div>
+          <div className="tableHeaderTaskName">Task</div>
+          <div className="tableHeaderDetail">Description</div>
           <div className="tableHeaderDueDate">Due Date</div>
-          <div className="tableHeaderProgress">Progress</div>
+          <div className="tableHeaderProgress">Status</div>
         </div>
         {filteredTask.map((task: Task) => {
           return <TaskListItem task={task} key={task.id} />
@@ -110,7 +106,7 @@ const TaskList = (): JSX.Element => {
       </div>
       {isModalOpen && (
         <TaskModal
-          headingTitle="Add your task"
+          headingTitle="New Task"
           type={TASK_MODAL_TYPE.ADD}
           setIsModalOpen={setIsModalOpen}
           defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}

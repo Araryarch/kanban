@@ -56,7 +56,9 @@ const TaskForm = ({
   return (
     <form className="form">
       <div className="formItem">
-        <label>Title：</label>
+        <label className="text-xs font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
+          Title
+        </label>
         <input
           type="text"
           value={title}
@@ -68,7 +70,9 @@ const TaskForm = ({
         />
       </div>
       <div className="formItem">
-        <label>Detail：</label>
+        <label className="text-xs font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
+          Detail
+        </label>
         <textarea
           value={detail}
           onChange={(e): void => {
@@ -79,7 +83,9 @@ const TaskForm = ({
         />
       </div>
       <div className="formItem">
-        <label>Due Date：</label>
+        <label className="text-xs font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
+          Due Date
+        </label>
         <input
           type="date"
           value={dueDate}
@@ -91,7 +97,9 @@ const TaskForm = ({
         />
       </div>
       <div className="formItem">
-        <label>Progress：</label>
+        <label className="text-xs font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
+          Progress
+        </label>
         <select
           className="formInput"
           defaultValue={1}
@@ -109,7 +117,7 @@ const TaskForm = ({
       </div>
       <button
         type="button"
-        className="formButton"
+        className="formButton mt-4 w-full"
         onClick={(): void => {
           handleSubmit()
         }}

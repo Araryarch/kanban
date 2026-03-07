@@ -2,143 +2,150 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    @apply transition-colors duration-200;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+}
+
 @layer utilities {
   h1 {
-    @apply py-4 text-4xl font-semibold;
+    @apply py-4 text-4xl font-light tracking-tight;
   }
 }
 
 @layer components {
-  .checklist {
-    @apply rounded-lg bg-slate-800 px-3 py-1 shadow-md shadow-slate-600 hover:bg-slate-900 hover:text-green-500 hover:shadow-sm hover:shadow-slate-950;
-  }
   .side-text {
-    @apply my-3 flex items-center rounded-md px-3 py-2 text-xl font-semibold no-underline shadow-sm shadow-white transition-all hover:bg-[#eebbc3] hover:text-blue-950 hover:shadow-md hover:shadow-slate-300;
+    @apply my-1 flex items-center gap-4 border-l-2 border-transparent px-6 py-4 text-sm font-medium uppercase tracking-widest no-underline transition-all;
   }
 
   .containers {
-    @apply flex min-h-screen flex-col bg-[#232946] p-5;
+    @apply flex min-h-screen flex-col border-r border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-950;
   }
 
   .icons {
-    @apply px-2 text-4xl;
+    @apply text-xl;
   }
 
   .list-task {
-    @apply -mt-4 mb-[40px] box-border flex w-[60%] items-center justify-center rounded-md bg-[#55C89F] p-2 py-3 text-[#fff] shadow-lg transition-all duration-200 hover:bg-green-500;
+    @apply mb-8 box-border flex w-full max-w-3xl items-center justify-between border-2 bg-white p-8 transition-all duration-200 dark:bg-slate-950;
   }
 
   .task-container {
-    @apply flex-1 px-5 py-8;
+    @apply flex-1 bg-slate-50 px-12 py-12 dark:bg-slate-900;
   }
 
   .task-title {
-    @apply mb-[40px] text-4xl text-[#fffffe];
+    @apply mb-12 border-b border-slate-300 pb-6 text-5xl font-extralight tracking-tight text-slate-900 dark:border-slate-700 dark:text-white;
   }
 
   .link-task {
-    @apply mr-[24px] rounded-lg bg-[#ff8906] p-[16px] text-[#fffffe] no-underline shadow-lg transition-all duration-300 hover:bg-orange-600;
+    @apply mr-6 border border-slate-900 bg-transparent px-8 py-4 text-xs font-semibold uppercase tracking-widest text-slate-900 no-underline transition-all duration-200 hover:bg-slate-900 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-slate-900;
   }
 
   .task-button-wrapper {
-    @apply relative mb-[30px] flex gap-5 text-[#0f0e17];
+    @apply relative mb-10 flex flex-wrap gap-3;
   }
 
   .list-button {
-    @apply flex cursor-pointer items-center rounded-md bg-slate-200 p-[16px] text-[16px] shadow-sm shadow-slate-200 transition-all duration-500 ease-in-out hover:shadow-md hover:shadow-[#ff8906];
+    @apply flex cursor-pointer items-center gap-3 border border-slate-300 bg-white px-6 py-3 text-xs font-semibold uppercase tracking-widest text-slate-700 transition-all duration-200 hover:border-slate-900 hover:bg-slate-900 hover:text-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:border-white dark:hover:bg-white dark:hover:text-slate-900;
   }
 
   .list-container {
-    @apply flex-1 p-5 text-white;
+    @apply flex-1 bg-slate-50 p-12 dark:bg-slate-900;
   }
 
   .table-head {
-    @apply flex border-b-[1px] border-[#D8D8D8] text-[24px];
+    @apply flex border-b border-slate-300 bg-white py-4 text-xs font-bold uppercase tracking-widest text-slate-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400;
   }
 
   .tableHeaderTaskName {
-    @apply w-[30%] p-[16px];
+    @apply w-[30%] px-6;
   }
 
   .tableHeaderDetail {
-    @apply w-[30%] p-[16px];
+    @apply w-[30%] px-6;
   }
 
   .tableHeaderDueDate {
-    @apply w-[20%] p-[16px];
+    @apply w-[20%] px-6;
   }
 
   .tableHeaderProgress {
-    @apply w-[15%] p-[16px];
+    @apply w-[15%] px-6;
   }
 
   .table-body {
-    @apply flex items-center border-b-[1px] border-[#D8D8D8] text-[20px];
+    @apply flex items-center border-b border-slate-200 bg-white py-1 text-sm transition-colors hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900;
   }
 
   .tableBodyTaskTitle {
-    @apply overflow-any flex w-[30%] items-center border-r-[1px] border-[#D8D8D8] p-[16px];
+    @apply overflow-any flex w-[30%] items-center border-r border-slate-200 px-6 py-5 dark:border-slate-800;
   }
 
   .tableBodyDetail {
-    @apply overflow-any w-[30%] border-r-[1px] border-[#D8D8D8] p-[16px];
+    @apply overflow-any w-[30%] border-r border-slate-200 px-6 py-5 text-slate-600 dark:border-slate-800 dark:text-slate-400;
   }
 
   .tableBodyDueDate {
-    @apply w-[20%] border-r-[1px] border-[#D8D8D8] p-[16px];
+    @apply w-[20%] border-r border-slate-200 px-6 py-5 text-slate-600 dark:border-slate-800 dark:text-slate-400;
   }
 
   .tableBodyprogress {
-    @apply w-[15%] p-[16px];
+    @apply w-[15%] px-6 py-5;
   }
   .taskCard {
-    @apply overflow-any relative my-3 rounded-md bg-[#eebbc3] p-6 text-xl text-[#232946] shadow-md shadow-slate-400;
+    @apply overflow-any relative my-4 border border-slate-200 bg-white p-8 text-sm transition-all duration-200 hover:border-slate-400 dark:border-slate-800 dark:bg-slate-950 dark:hover:border-slate-600;
   }
   .taskIcons {
     @apply flex justify-between;
   }
   .menuIcons {
-    @apply cursor-pointer;
+    @apply cursor-pointer transition-opacity hover:opacity-60;
   }
   .cardTitle {
-    @apply mt-3 py-2 text-3xl;
+    @apply mt-4 py-2 text-lg font-medium tracking-tight text-slate-900 dark:text-white;
   }
   .cardDetail {
-    @apply mb-8;
+    @apply mb-8 text-slate-600 dark:text-slate-400;
   }
   .cardIcons {
-    @apply rounded-md p-2 text-white shadow-md transition-all duration-200 ease-in-out;
+    @apply border border-current p-3 text-xs transition-all duration-200 ease-in-out hover:bg-current hover:text-white;
   }
 
-  /* ! Froms */
+  /* ! Forms */
   .modalContainer {
-    @apply fixed left-[40%] top-[15%] z-10 w-[35%] items-center rounded-md border-2 border-[#121629] bg-[#232946] p-10 text-[#fffffe] shadow-sm shadow-white;
+    @apply fixed left-1/2 top-1/2 z-50 w-[90%] max-w-xl -translate-x-1/2 -translate-y-1/2 items-center border border-slate-300 bg-white p-10 shadow-2xl dark:border-slate-700 dark:bg-slate-950;
   }
   .form {
-    @apply text-2xl;
+    @apply mt-8 text-sm;
   }
   .formItem {
-    @apply mb-4 flex flex-col justify-center;
+    @apply mb-8 flex flex-col justify-center;
   }
   .formInput {
-    @apply my-1 box-border h-10 rounded-md bg-[#eebbc3] px-2 text-xl text-[#232946] shadow-md shadow-black;
+    @apply mt-3 box-border h-12 border-b border-slate-300 bg-transparent px-1 text-base text-slate-900 focus:border-slate-900 focus:outline-none dark:border-slate-700 dark:text-white dark:focus:border-white;
   }
   .formTextArea {
-    @apply box-border h-20 rounded-md bg-[#eebbc3] px-2 py-1 text-xl text-[#232946] shadow-md shadow-black;
+    @apply mt-3 box-border h-28 border-b border-slate-300 bg-transparent px-1 py-2 text-base text-slate-900 focus:border-slate-900 focus:outline-none dark:border-slate-700 dark:text-white dark:focus:border-white;
   }
   .formButton {
-    @apply rounded-md border-none bg-[#fffffe] px-6 py-3 text-xl text-[#232946] shadow-md shadow-black hover:bg-slate-200;
+    @apply border border-slate-900 bg-transparent px-10 py-4 text-xs font-bold uppercase tracking-widest text-slate-900 transition-all hover:bg-slate-900 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-slate-900;
   }
 
   /* ! TaskMenu */
   .menu {
-    @apply absolute right-3 z-10 rounded-md border-2 border-slate-400 bg-[#232946] px-2 py-1 text-[#fffffe] shadow-md shadow-slate-700 transition-all duration-300 ease-in-out;
+    @apply absolute right-3 z-20 border border-slate-300 bg-white px-4 py-3 shadow-xl dark:border-slate-700 dark:bg-slate-950;
   }
   .menuItem {
-    @apply mb-2 flex cursor-pointer items-center rounded-md border-2 border-slate-400 px-3 py-1 shadow-md shadow-black transition-all duration-300 ease-in-out;
+    @apply mb-2 flex cursor-pointer items-center gap-3 border border-slate-300 px-5 py-3 text-xs uppercase tracking-widest text-slate-700 transition-all duration-200 hover:border-slate-900 hover:bg-slate-900 hover:text-white dark:border-slate-700 dark:text-slate-300 dark:hover:border-white dark:hover:bg-white dark:hover:text-slate-900;
   }
   .closeIcon {
-    @apply h-fit rounded-md border-2 border-red-400 p-1 text-red-600 shadow-md shadow-red-800 transition-all duration-300 ease-in-out hover:bg-pink-500 hover:text-red-900;
+    @apply h-fit border border-red-600 p-2 text-red-600 transition-all duration-200 hover:bg-red-600 hover:text-white;
   }
 }
 
@@ -147,9 +154,13 @@
 }
 
 body {
-  font-family: 'Inter';
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   margin: 0;
-  background-color: #0f0e17;
+  background-color: #f1f5f9;
+}
+
+body.dark {
+  background-color: #0f172a;
 }
 
 .overflow-any {

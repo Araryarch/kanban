@@ -22,21 +22,29 @@ const TaskMenu = ({
   }
   return (
     <div className={`${responsive} menu`}>
-      <div className="close-wrapper flex justify-end gap-2 p-1">
-        <div
-          className="menuItem flex-1 hover:bg-white hover:text-[#3da9fc]"
-          onClick={(): void => setIsModalOpen(true)}
+      <div className="close-wrapper mb-2 flex justify-end">
+        <button
+          className="material-icons closeIcon"
+          onClick={() => setIsMenuOpen(false)}
+          aria-label="Close menu"
         >
-          <span className="material-icons px-1">edit</span>
-          Edit
-        </div>
-        <span className="material-icons closeIcon" onClick={() => setIsMenuOpen(false)}>
           close
-        </span>
+        </button>
       </div>
-      <div className="menuItem hover:bg-white hover:text-red-600" onClick={handleDeleteClick}>
-        <span className="material-icons px-1">delete</span>Delete
-      </div>
+      <button
+        className="menuItem w-full hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-indigo-900 dark:hover:text-indigo-300"
+        onClick={(): void => setIsModalOpen(true)}
+      >
+        <span className="material-icons">edit</span>
+        Edit
+      </button>
+      <button
+        className="menuItem w-full hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900 dark:hover:text-red-300"
+        onClick={handleDeleteClick}
+      >
+        <span className="material-icons">delete</span>
+        Delete
+      </button>
       {isModalOpen && (
         <TaskModal
           setIsModalOpen={setIsModalOpen}
